@@ -9,6 +9,7 @@ function GUI()
 
         left:Button("Bike For Brainrots", "Bike", function()
             UI.RemoveTab("SKIBIDI MENU")
+            loadstring(game:HttpGet(""))()
         end)
     end)
 

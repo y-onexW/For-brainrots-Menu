@@ -7,13 +7,6 @@ local HRP = char.HumanoidRootPart
 local MovementConnection = nil
 local MovementRunning = false
 
-local NoDetectBox = {
-    RightCornerFront = Vector3.new(293.60, -10.02, -73.48),
-    RightCornerBack  = Vector3.new(293.10, -9.82, 37.96),
-    LeftCornerFront  = Vector3.new(-257.40, -10.02, -73.55),
-    LeftCornerBack   = Vector3.new(-256.90, -9.82, 37.96)
-}
-
 local ItemSpawns = game.Workspace.ItemSpawns
 
 local brainrotModels = {}
