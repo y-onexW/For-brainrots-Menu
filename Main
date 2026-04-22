@@ -1,19 +1,13 @@
-function GUI()
-    UI.RemoveTab("SKIBIDI MENU")
-    UI.AddTab("SKIBIDI MENU", function(tab)
-        local left = tab:Section("Movement", "Left")
+local placeId = game.PlaceId
 
-        left:Button("Swing For Brainrots", "Swing For Brainrots", function()
-            UI.RemoveTab("SKIBIDI MENU")
-        end)
+if placeId == 136919941417380 then
+    print("Running in the correct game!")
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/y-onexW/For-brainrots-Menu/refs/heads/main/BikeForBrainrots.luau"))()
 
-        left:Button("Bike For Brainrots", "Bike", function()
-            UI.RemoveTab("SKIBIDI MENU")
-            loadstring(game:HttpGet(""))()
-        end)
-    end)
+elseif placeId == 114640202062357 then
+    print("Running in the correct game!")
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/y-onexW/For-brainrots-Menu/refs/heads/main/SwingForBrainRots.luau"))()
 
-    notify("SKIBIDI MENU", "YOUR SO SIGMA", 5)
+else
+    warn("This script does not support this game ID: " .. tostring(placeId))
 end
-
-GUI()

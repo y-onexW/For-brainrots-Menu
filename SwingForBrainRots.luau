@@ -161,7 +161,7 @@ end
 
 function MoveToTarget(targetModel)
     local root = targetModel:FindFirstChild("HumanoidRootPart") or targetModel:FindFirstChildWhichIsA("BasePart")
-    local targetPos = (root and root.Position or Vector3.new()) + Vector3.new(0, 10, 0)
+    local targetPos = (root and root.Position or Vector3.new()) + Vector3.new(0, 2, 0)
 
     if SelectedMoveStyle == 0 then
         InstantTeleport(targetPos)
@@ -219,6 +219,7 @@ function StopAutoLoop()
 end
 
 local Zones = {
+    Bases = Vector3.new(16.21, -9.82, -44.01),
     One = game.Workspace.Zones[1].Position,
     Two = game.Workspace.Zones[2].Position,
     Three = game.Workspace.Zones[3].Position,
@@ -236,7 +237,7 @@ local Zones = {
     Fifteen = game.Workspace.Zones[15].Position,
 }
 
-local ZoneOrder = {"One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve","Thirteen","Fourteen","Fifteen"}
+local ZoneOrder = {"Bases","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve","Thirteen","Fourteen","Fifteen"}
 
 function GotoZones()
     local zoneName = ZoneOrder[SelectedZone]
@@ -301,7 +302,7 @@ function GUI()
 
         local left = tab:Section("Movement", "Left")
 
-        left:Combo("Move", "Movement Style", {"Choose Movement Style", "Instant Teleport", "SmoothLikeButter"}, 0, function(selectedIndex)
+        left:Combo("Move", "Movement Style", {"Choose Movement Style", "Instant Teleport(works like ass tbh)", "SmoothLikeButter"}, 0, function(selectedIndex)
             if selectedIndex == 0 then
                 SelectedMoveStyle = 0
             else
@@ -370,7 +371,7 @@ function GUI()
 
         local right = tab:Section("Teleport To Zones", "Right")
 
-        right:Combo("Teleport Mode", "Movement Style", {"Choose Movement Style", "Instant Teleport", "SmoothLikeButter"}, 0, function(selectedIndex)
+        right:Combo("Teleport Mode", "Movement Style", {"Choose Movement Style", "Instant Teleport(works like ass ngl)", "SmoothLikeButter"}, 0, function(selectedIndex)
             if selectedIndex == 0 then
                 SelectedZoneMoveStyle = 0
             else
@@ -378,7 +379,7 @@ function GUI()
             end
         end)
 
-        right:Combo("Zone", "Select Zone", {"One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen"}, 0, function(selectedIndex)
+        right:Combo("Zone", "Select Zone", {"Bases", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen"}, 0, function(selectedIndex)
             SelectedZone = selectedIndex + 1
         end)
 

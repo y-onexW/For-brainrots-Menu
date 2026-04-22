@@ -82,7 +82,7 @@ function SmoothLikeButterMovement(targetPos)
     DisableClip()
 
     local MovementSpeed = 5500
-    local ApexY = math.max(4000, HRP.Position.Y + 4000)
+    local ApexY = math.max(2000, HRP.Position.Y + 2000)
     local phase = 1
 
     MovementRunning = true
@@ -133,7 +133,7 @@ function InstantTeleport(targetPos)
         if (HRP.Position - targetPos).Magnitude < 3 then
             task.wait(3.2)
             local currentPos = HRP.Position
-            local upPos = Vector3.new(currentPos.X, currentPos.Y + 4000, currentPos.Z)
+            local upPos = Vector3.new(currentPos.X, currentPos.Y + 2000, currentPos.Z)
             for j = 1, 8 do
                 HRP.CFrame = CFrame.new(upPos.X, upPos.Y, upPos.Z)
                 HRP.AssemblyLinearVelocity = Vector3.zero
@@ -150,7 +150,7 @@ end
 
 function MoveToTarget(targetModel)
     local root = targetModel:FindFirstChild("HumanoidRootPart") or targetModel:FindFirstChildWhichIsA("BasePart")
-    local targetPos = (root and root.Position or Vector3.new()) + Vector3.new(0, 10, 0)
+    local targetPos = (root and root.Position or Vector3.new()) + Vector3.new(0, 2, 0)
 
     if SelectedMoveStyle == 0 then
         InstantTeleport(targetPos)
@@ -208,6 +208,7 @@ function StopAutoLoop()
 end
 
 local Zones = {
+    Bases = Vector3.new(-3393.77, 1450.34, -2880.94),
     One = Vector3.new(-3393.39, 1450.33, -2696.21),
     Two = Vector3.new(-3394.69, 1450.33, -2284.55),
     Three = Vector3.new(-3394.07, 1450.33, -1410.38),
@@ -220,7 +221,7 @@ local Zones = {
     Ten = Vector3.new(-3393.53, 1450.33, 7891.43),
 }
 
-local ZoneOrder = {"One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten"}
+local ZoneOrder = {"Bases","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten"}
 
 function GotoZones()
     local zoneName = ZoneOrder[SelectedZone]
@@ -352,7 +353,7 @@ function GUI()
             end
         end)
 
-        right:Combo("Zone", "Select Zone", {"One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"}, 0, function(selectedIndex)
+        right:Combo("Zone", "Select Zone", {"Bases", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"}, 0, function(selectedIndex)
             SelectedZone = selectedIndex + 1
         end)
 
